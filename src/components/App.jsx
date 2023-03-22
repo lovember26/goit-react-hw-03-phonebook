@@ -13,6 +13,7 @@ export class App extends Component {
   componentDidMount() {
     try {
       const storageData = JSON.parse(localStorage.getItem('contacts'));
+
       if (storageData) {
         this.setState({ contacts: storageData });
       }
@@ -20,7 +21,7 @@ export class App extends Component {
       console.log(error);
     }
   }
-  componentDidUpdate(prevState) {
+  componentDidUpdate(_, prevState) {
     if (prevState.contacts !== this.state.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
